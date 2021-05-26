@@ -1,26 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useQuery, gql } from "@apollo/client";
+import styled from "styled-components";
 
-function App() {
+export const App = () => {
+  const { data, loading, error } = useQuery(gql`
+    ## your events query goes here
+  `);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>Error: {error}</h1>;
+  }
+
+  const events: Array<{
+    id: string;
+    name: string;
+    image: string;
+    description: string;
+  }> = []; // data from query goes here
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <h1>Hip Hop Fest</h1>
+      {events.map((event) => (
+        <Event key={event.id}>
+          <FlexCol>
+            <h2 style={{ textAlign: "center" }}>{event.name}</h2>
+            <img
+              src={event.image}
+              height={250}
+              style={{ borderRadius: "20px" }}
+            />
+          </FlexCol>
+          <EventDescription>
+            <p>{event.description}</p>
+          </EventDescription>
+        </Event>
+      ))}
+    </Wrapper>
   );
-}
+};
 
-export default App;
+const FlexCol = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Wrapper = styled(FlexCol)`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Event = styled.div`
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: row;
+`;
+
+const EventDescription = styled(FlexCol)`
+  padding: 20px;
+  justify-content: center;
+  max-width: 650px;
+`;
