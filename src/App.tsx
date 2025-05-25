@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const App = () => {
   const { data, loading, error } = useQuery(gql`
-    query {
+    query GetEvents {
       events {
         id
         name

@@ -5,7 +5,7 @@ export const mockLink = new ApolloLink((operation) => {
   return new Observable((observer) => {
     setTimeout(() => {
       switch (operation.operationName) {
-        case "events":
+        case "GetEvents":
           observer.next({
             data: {
               events: mockEvents,
