@@ -11,7 +11,7 @@ export const SpinnerWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 96px);
+  height: calc(100vh - 136px);
   width: 100%;
   padding: 20px;
   text-align: center;
