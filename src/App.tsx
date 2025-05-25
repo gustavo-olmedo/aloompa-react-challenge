@@ -26,7 +26,7 @@ export const App = () => {
     name: string;
     image: string;
     description: string;
-  }> = []; // data from query goes here
+  }> = data?.events || []; // data from query goes here
 
   return (
     <Wrapper>
