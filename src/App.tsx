@@ -1,6 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import styled from "styled-components";
 import { Loader } from "./components/Loader";
+import ApolloErrorModal from "./components/ApolloErrorModal";
 
 export const App = () => {
   const { data, loading, error } = useQuery(gql`
@@ -16,10 +17,6 @@ export const App = () => {
 
   if (loading) {
     return <Loader />;
-  }
-
-  if (error) {
-    return <h1>Error: {error}</h1>;
   }
 
   const events: Array<{
@@ -47,6 +44,7 @@ export const App = () => {
           </EventDescription>
         </Event>
       ))}
+      <ApolloErrorModal apolloError={error} />
     </Wrapper>
   );
 };
