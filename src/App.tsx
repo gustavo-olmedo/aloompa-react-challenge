@@ -1,5 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
 import styled from "styled-components";
+import { Loader } from "./components/Loader";
 
 export const App = () => {
   const { data, loading, error } = useQuery(gql`
@@ -14,7 +15,7 @@ export const App = () => {
   `);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   if (error) {
