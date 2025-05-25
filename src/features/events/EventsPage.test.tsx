@@ -34,8 +34,20 @@ import { useQuery } from "@apollo/client";
 
 describe("EventsPage", () => {
   const mockEvents = [
-    { id: "1", name: "Event 1" },
-    { id: "2", name: "Event 2" },
+    {
+      id: "1",
+      name: "Live Concert Night",
+      image: "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg",
+      description:
+        "Experience the thrill of live music with electrifying performances.",
+    },
+    {
+      id: "2",
+      name: "Corporate Seminar",
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df",
+      description:
+        "Join industry leaders for insightful discussions and networking.",
+    },
   ];
 
   it("renders loader when loading", () => {
