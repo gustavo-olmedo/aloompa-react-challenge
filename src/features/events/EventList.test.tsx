@@ -41,9 +41,9 @@ describe("EventList", () => {
 
   it("displays the correct event names", () => {
     render(<EventList events={mockEvents} />);
-    expect(screen.getByText("Live Concert Night")).toBeInTheDocument();
-    expect(screen.getByText("Corporate Seminar")).toBeInTheDocument();
-    expect(screen.getByText("Wedding Celebration")).toBeInTheDocument();
+    expect(screen.getByText(mockEvents[0].name)).toBeInTheDocument();
+    expect(screen.getByText(mockEvents[1].name)).toBeInTheDocument();
+    expect(screen.getByText(mockEvents[2].name)).toBeInTheDocument();
   });
 
   it("renders nothing if events list is empty", () => {
