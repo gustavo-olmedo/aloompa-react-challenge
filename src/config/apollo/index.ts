@@ -5,8 +5,10 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 
+import { mockLink } from "../../mocks";
+
 const createApolloClient = (): ApolloClient<NormalizedCacheObject> => {
-  const httpLink = mockLink; // TODO add mock
+  const httpLink = mockLink;
 
   return new ApolloClient({
     link: from([httpLink]),
