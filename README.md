@@ -16,6 +16,7 @@ This is a technical challenge designed to evaluate your React and GraphQL skills
 
 ### 1. Project Setup
 
+- **Node.js version 16.x is required.** Please ensure you are using Node 16 before installing dependencies.
 - Clone this repository
 - Install dependencies using either:
   ```bash
