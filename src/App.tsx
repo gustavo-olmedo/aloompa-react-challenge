@@ -1,19 +1,13 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import styled from "styled-components";
+
 import { Loader } from "./components/Loader";
 import ApolloErrorModal from "./components/ApolloErrorModal";
 
+import { GET_EVENTS } from "./graphql/queries";
+
 export const App = () => {
-  const { data, loading, error } = useQuery(gql`
-    query GetEvents {
-      events {
-        id
-        name
-        image
-        description
-      }
-    }
-  `);
+  const { data, loading, error } = useQuery(GET_EVENTS);
 
   if (loading) {
     return <Loader />;
