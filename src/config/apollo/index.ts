@@ -8,6 +8,7 @@ import {
 } from "@apollo/client";
 
 import { mockLink } from "../../mocks";
+import { errorMiddleware, typenameMiddleware } from "./apollo-middleware";
 
 const createApolloClient = (): ApolloClient<NormalizedCacheObject> => {
   const REACT_APP_GRAPHQL_API = process.env.REACT_APP_GRAPHQL_API;
@@ -22,7 +23,7 @@ const createApolloClient = (): ApolloClient<NormalizedCacheObject> => {
         );
 
   return new ApolloClient({
-    link: from([httpLink]),
+    link: from([typenameMiddleware, errorMiddleware, httpLink]),
     cache: new InMemoryCache(),
   });
 };
