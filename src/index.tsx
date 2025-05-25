@@ -2,12 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { App } from "./App";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
+import { getApolloClient } from "./config/apollo";
 
-const client = new ApolloClient({
-  uri: "", // your API url goes here,
-  cache: new InMemoryCache(),
-});
+const client = getApolloClient();
 
 ReactDOM.render(
   <ApolloProvider client={client}>
